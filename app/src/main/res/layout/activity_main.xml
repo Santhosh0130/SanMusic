@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.MainActivity">
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/search_bar_layout"-->
+<!--        android:background="@color/Primary">-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/search_bar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginEnd="30dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:background="@drawable/searcbar_bg"-->
+<!--            android:ems="10"-->
+<!--            android:clickable="false"-->
+<!--            android:hint="Search.."-->
+<!--            android:paddingStart="16dp"-->
+<!--            android:singleLine="true"-->
+<!--            android:textColor="@color/Secondary"-->
+<!--            android:textColorHint="@color/white"-->
+<!--            android:textSize="14sp" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imageView"-->
+<!--            android:layout_width="15dp"-->
+<!--            android:layout_height="15dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="40dp"-->
+<!--            android:src="@drawable/search" />-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/expand_more"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="7dp"-->
+<!--            android:src="@drawable/expand_more" />-->
+<!--    </RelativeLayout>-->
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tab_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:background="@color/Primary"-->
+<!--        app:tabIndicatorFullWidth="true"-->
+<!--        app:tabIndicatorGravity="center"-->
+<!--        android:layout_below="@id/search_bar_layout"-->
+<!--        app:tabTextColor="@color/white"-->
+<!--        app:tabIndicatorHeight="50dp"-->
+<!--        app:tabIndicatorColor="@color/Secondary"-->
+<!--        app:tabIndicator="@drawable/tab_indicator"/>-->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frame"/>
+
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/view_pager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentTop="true"/>-->
+
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/frag_frame"/>-->
+
+<!--    <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--        android:id="@+id/bottom_app_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:backgroundTint="@color/Primary"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        app:fabCradleMargin="10dp"-->
+<!--        app:fabCradleRoundedCornerRadius="50dp"-->
+<!--        app:fabAnimationMode="slide"-->
+<!--        app:fabCradleVerticalOffset="15dp"-->
+<!--        tools:ignore="BottomAppBar">-->
+
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:id="@+id/bottom_navigation_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            app:labelVisibilityMode="unlabeled"-->
+<!--            app:itemIconTint="@color/Secondary"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            app:menu="@menu/items"-->
+<!--            />-->
+
+<!--    </com.google.android.material.bottomappbar.BottomAppBar>-->
+
+</RelativeLayout>

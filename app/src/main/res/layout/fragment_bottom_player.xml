@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/bottom_action1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#2E2E2E"
+        android:paddingBottom="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottom_seekbar_layout">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/bottom_seekbar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressTint="@color/Secondary"
+                app:trackColor="@color/LightBlack"
+                app:trackThickness="4dp"
+                app:trackCornerRadius="8dp"
+                app:indicatorColor="@color/Secondary"
+                android:progress="50"
+                android:thumbTint="@android:color/transparent"/>
+
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:id="@+id/bottom_player_mini_card1"
+            android:layout_below="@id/bottom_seekbar_layout"
+            app:cardCornerRadius="15dp"
+            android:layout_marginStart="10dp">
+
+            <ImageView
+                android:id="@+id/bottom_player_img1"
+                android:scaleType="centerCrop"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/musical_notes_04" />
+        </androidx.cardview.widget.CardView>
+
+
+        <ImageView
+            android:id="@+id/bottom_player_nextbtn1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/skip_next" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bottom_player_pause_play_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_toStartOf="@id/bottom_player_nextbtn1"
+            android:clickable="true"
+            android:src="@drawable/pause"
+            app:backgroundTint="@color/Secondary"
+            app:fabCustomSize="40dp"
+            app:shapeAppearanceOverlay="@style/FAB_bg" />
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:id="@+id/bottom_player_pause_layout"-->
+<!--            android:layout_toStartOf="@id/bottom_player_nextbtn">-->
+
+<!--            <me.tankery.lib.circularseekbar.CircularSeekBar-->
+<!--                android:layout_width="55dp"-->
+<!--                android:layout_height="55dp"-->
+<!--                android:id="@+id/bottom_circular_seekbar"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                app:cs_circle_progress_color="@color/Secondary"-->
+<!--                app:cs_pointer_color="@color/Secondary"-->
+<!--                app:cs_progress="50" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/bottom_player_pause_play_btn"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/pause"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true" />-->
+
+<!--        </RelativeLayout>-->
+
+        <TextView
+            android:id="@+id/bottom_player_song_name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/bottom_player_pause_play_btn1"
+            android:layout_toEndOf="@id/bottom_player_mini_card1"
+            android:maxLines="1"
+            android:text="Song Name of Curent Playing"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bottom_player_artist_name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bottom_player_song_name1"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toStartOf="@id/bottom_player_pause_play_btn1"
+            android:layout_toEndOf="@id/bottom_player_mini_card1"
+            android:maxLines="1"
+            android:text="Artist Name of Currunt Song"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+</FrameLayout>

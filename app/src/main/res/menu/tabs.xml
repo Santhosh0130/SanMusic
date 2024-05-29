@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/tab_songs"
+        android:icon="@drawable/music_note1"
+        android:title="Songs" />
+
+    <item android:id="@+id/tab_albums"
+        android:icon="@drawable/album1"
+        android:title="Album" />
+
+    <item android:id="@+id/tab_others"
+        android:icon="@drawable/more"
+        android:title="Other" />
+
+</menu>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.SlideUpPanelActivity">
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:id="@+id/sliding_layout"
+        app:umanoPanelHeight="120dp">
+
+        <include layout="@layout/activity_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+            <include layout="@layout/activity_music_player"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/Primary"
+        android:layout_alignParentBottom="true"
+        app:fabCradleMargin="10dp"
+        app:fabCradleRoundedCornerRadius="50dp"
+        app:fabAnimationMode="slide"
+        tools:ignore="BottomAppBar">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconTint="@color/Secondary"
+            android:layout_marginEnd="10dp"
+            app:menu="@menu/menu_items"
+            />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+</RelativeLayout>

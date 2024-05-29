@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Primary"
+    android:fillViewport="true"
+    tools:context="Activities.AlbumDetailsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/album_back_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/arrow_back" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/card"
+            android:layout_below="@id/album_back_btn"
+            app:cardElevation="10dp"
+            android:layout_margin="20dp"
+            android:background="@color/LightBlack"
+            app:cardCornerRadius="15dp">
+
+            <ImageView
+                android:id="@+id/albumBanner"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/musical_notes_04" />
+
+            <ImageView
+                android:id="@+id/albumbannergradientbg"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/main_bg" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card"
+            android:text="Album"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:maxLines="2" />
+
+        <RelativeLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/play_all_btn"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/Secondary"
+                android:shadowRadius="3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="91dp"
+                android:backgroundTint="@color/LightBlack"
+                android:text="Play All"
+                android:textColor="@color/Secondary"
+                android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/shuffule_btn1"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/LightBlack"
+                android:shadowRadius="3"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentEnd="true"
+                android:text="Shuffle"
+                android:textColor="@color/Primary"
+                android:textStyle="bold"
+                android:backgroundTint="@color/Secondary"/>
+
+        </RelativeLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerviewforalbumdetails"
+            android:nestedScrollingEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/button_layout" />
+
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
