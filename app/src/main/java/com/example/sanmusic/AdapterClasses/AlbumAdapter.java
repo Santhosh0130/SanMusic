@@ -24,11 +24,13 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.LikeViewHold
     List<MusicFiles> album_list;
     Context context;
     int GridStyle_id;
+    boolean fragment;
 
-    public AlbumAdapter(List<MusicFiles> album_list, Context context, int GridStyle) {
+    public AlbumAdapter(List<MusicFiles> album_list, Context context, int GridStyle, boolean fragment) {
         this.album_list = album_list;
         this.context = context;
         this.GridStyle_id = GridStyle;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -39,21 +41,37 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.LikeViewHold
 
     @Override
     public void onBindViewHolder(@NonNull LikeViewHolder holder, int position) {
-        holder.albumName.setText(album_list.get(position).getAlbumName());
-        String img = album_list.get(position).getAlbumArt();
-        if (img != null){
-            Glide.with(context).load(img).into(holder.albumArt);
-        } else {
-            Glide.with(context).load(R.drawable.musical_notes_04).into(holder.albumArt);
-        }
-        holder.itemView.setOnClickListener(v->{
-            Intent intent = new Intent(context, AlbumDetailsActivity.class);
-            intent.putExtra("albumName",album_list.get(position).getAlbumName());
-            context.startActivity(intent);
+        if (fragment){
+            holder.albumName.setText(album_list.get(position).getPlaylistTitle());
+            String img = album_list.get(position).getAlbumArt();
+            if (img != null){
+                Glide.with(context).load(img).into(holder.albumArt);
+            } else {
+                Glide.with(context).load(R.drawable.musical_notes_04).into(holder.albumArt);
+            }
+            holder.itemView.setOnClickListener(v->{
+                Intent intent = new Intent(context, AlbumDetailsActivity.class);
+                intent.putExtra("albumName",album_list.get(position).getPlaylistTitle());
+                context.startActivity(intent);
 
-        });
-        if (GridStyle_id == R.layout.list_items){
-            holder.more.setVisibility(View.GONE);
+            });
+        } else {
+            holder.albumName.setText(album_list.get(position).getAlbumName());
+            String img = album_list.get(position).getAlbumArt();
+            if (img != null) {
+                Glide.with(context).load(img).into(holder.albumArt);
+            } else {
+                Glide.with(context).load(R.drawable.musical_notes_04).into(holder.albumArt);
+            }
+            holder.itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(context, AlbumDetailsActivity.class);
+                intent.putExtra("albumName", album_list.get(position).getAlbumName());
+                context.startActivity(intent);
+
+            });
+            if (GridStyle_id == R.layout.list_items){
+                holder.more.setVisibility(View.GONE);
+            }
         }
     }
 

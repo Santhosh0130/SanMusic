@@ -73,28 +73,28 @@ public class AlbumFragment extends Fragment {
 
         //For show the Albums
         if (Style.equals("list")) {
-            adapter = new AlbumAdapter(sortedList, requireContext(), R.layout.list_items);
+            adapter = new AlbumAdapter(sortedList, requireContext(), R.layout.list_items, false);
             recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
         } else {
             switch (Size) {
                 case "1":
-                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.list_items);
+                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.list_items, false);
                     recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false));
                     break;
                 case "2":
-                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_item);
+                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_item, false);
                     recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
                     break;
                 case "3":
-                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_item_3);
+                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_item_3, false);
                     recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 3));
                     break;
                 case "4":
-                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_items_4);
+                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_items_4, false);
                     recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 4));
                     break;
                 default:
-                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_item);
+                    adapter = new AlbumAdapter(sortedList, getContext(), R.layout.card_item, false);
                     recyclerView.setLayoutManager(new GridLayoutManager(requireActivity(), 2));
                     break;
             }

@@ -73,11 +73,13 @@ public class AlbumDetailsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        byte[] albumArt = getImg(albumSongs.get(0).getPath());
-        if (albumArt != null){
-            Glide.with(this).load(albumArt).into(albumBanner);
-        } else {
-            Glide.with(this).load(R.drawable.musical_notes_04).into(albumBanner);
+        if (albumSongs != null) {
+            byte[] albumArt = getImg(albumSongs.get(0).getPath());
+            if (albumArt != null) {
+                Glide.with(this).load(albumArt).into(albumBanner);
+            } else {
+                Glide.with(this).load(R.drawable.musical_notes_04).into(albumBanner);
+            }
         }
     }
 

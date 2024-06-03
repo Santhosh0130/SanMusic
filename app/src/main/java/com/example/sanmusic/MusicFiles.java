@@ -15,6 +15,7 @@ public class MusicFiles {
     private String dateModified;
     private String artistName;
     private String year;
+    private String playlistTitle;
     private String fStatus = "0";
     private int FavPosition = 0;
     private int position_fav = 0;
@@ -45,8 +46,20 @@ public class MusicFiles {
         this.no_songs = no_songs;
         this.albumArt = albumArt;
     }
+    public MusicFiles(String playlistTitle){
+        this.playlistTitle = playlistTitle;
+    }
+
     public MusicFiles(int position_fav){
         this.position_fav = position_fav;
+    }
+
+    public String getPlaylistTitle() {
+        return playlistTitle;
+    }
+
+    public void setPlaylistTitle(String playlistTitle) {
+        this.playlistTitle = playlistTitle;
     }
 
     public String getYear() {

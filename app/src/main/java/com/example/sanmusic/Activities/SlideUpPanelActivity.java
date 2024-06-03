@@ -75,6 +75,7 @@ public class SlideUpPanelActivity extends AppCompatActivity implements ActionPla
     public int position = -1;
     protected int realPosition;
     public static List<MusicFiles> list_songs;
+    public static List<MusicFiles> playlists = new ArrayList<>();
     ImageView shuffle,previous,next,repeat, menu,back,img_art,expand,bottomArt,bottomNext, close;
     public static ImageView main_like;
     public static Uri uri;
