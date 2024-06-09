@@ -1,13 +1,23 @@
 package com.example.sanmusic;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sanmusic.Activities.SlideUpPanelActivity;
 import com.example.sanmusic.AdapterClasses.AddFavAdapter;
@@ -28,6 +38,8 @@ public class SongPopupMenu extends SlideUpPanelActivity {
     public static final String MY_SORT_SETTINGS = "SortOrder: ";
     public static final String MY_GRID_SIZE_SETTINGS = "GridSize: ";
     public static final String MY_GRID_STYLE_SETTINGS = "GridStyle: ";
+    TextView name, album, artist, duration, path;
+    RecyclerView addRecyclerview;
     int songPosition = -1;
 
     public SongPopupMenu(Context context, View view) {
@@ -48,21 +60,70 @@ public class SongPopupMenu extends SlideUpPanelActivity {
         if (item.getItemId() == R.id.play_next_item) {
             Toast.makeText(context, "Play next "+songPosition, Toast.LENGTH_SHORT).show();
             if (list_songs != null){
-                list_songs.add(position + 1, musicFiles.get(0));
+//                List<MusicFiles> newList = new ArrayList<>(list_songs);
+                list_songs.add(songPosition , list_songs.get(songPosition));
+//                updateList(newList);
+                return true;
             }
+        } else if (item.getItemId() == R.id.add_to_playlist_item) {
+            Toast.makeText(context, "Added to playlist", Toast.LENGTH_SHORT).show();
+            Dialog addPlaylist = new Dialog(context);
+            addPlaylist.setContentView(R.layout.add_playlist_dialog);
+            addPlaylist.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            addPlaylist.setCanceledOnTouchOutside(true);
+            addRecyclerview = addPlaylist.findViewById(R.id.add_recycleview);
+            addRecyclerview.setHasFixedSize(true);
+            addRecyclerview.setLayoutManager(new LinearLayoutManager(context));
+            addRecyclerview.setAdapter(new AddPlaylist(context, playlists));
+            addPlaylist.show();
         }
-
         else if (item.getItemId() == R.id.add_to_queue_item) {
             Toast.makeText(context, "Add to playing queue", Toast.LENGTH_SHORT).show();
+            if (list_songs != null){
+                list_songs.add(list_songs.get(songPosition));
+            }
+            return true;
         }
         else if (item.getItemId() == R.id.details_item) {
             Toast.makeText(context, "Details", Toast.LENGTH_SHORT).show();
+            Dialog detailsDialog = new Dialog(context);
+            detailsDialog.setContentView(R.layout.details_dialog);
+            detailsDialog.setCanceledOnTouchOutside(true);
+            detailsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            name = detailsDialog.findViewById(R.id.det_song_name);
+            name.setText(realSongs.get(songPosition).getTitle());
+            album = detailsDialog.findViewById(R.id.det_album_name);
+            album.setText(realSongs.get(songPosition).getAlbum());
+            artist = detailsDialog.findViewById(R.id.det_artist_name);
+            artist.setText(realSongs.get(songPosition).getArtist());
+            duration = detailsDialog.findViewById(R.id.det_duration);
+            duration.setText(formattedTime(Integer.parseInt(realSongs.get(songPosition).getDuration()) / 1000));
+            path = detailsDialog.findViewById(R.id.det_path);
+            path.setText(realSongs.get(songPosition).getPath());
+            detailsDialog.findViewById(R.id.det_ok_btn).setOnClickListener(v -> detailsDialog.dismiss());
+            detailsDialog.show();
+            return true;
         }
         else if (item.getItemId() == R.id.delete_item) {
             Toast.makeText(context, "Delete from device", Toast.LENGTH_SHORT).show();
+            return true;
         }
-        return true;
+        return false;
     }
+    private String formattedTime(int currentPosition) {
+        String Totalout = "";
+        String Totalnew = "";
+        String sec = String.valueOf(currentPosition % 60);
+        String min = String.valueOf(currentPosition / 60);
+        Totalout = min + ":" + sec;
+        Totalnew = min + ":" + "0" + sec;
+        if (sec.length() == 1){
+            return Totalnew;
+        } else {
+            return Totalout;
+        }
+    }
+
 
     public void createSortPopupMenu(int val, List<MusicFiles> musicFilesList, MusicAdapter mAdapter, AlbumAdapter aAdapter, AddFavAdapter fAdapter){
         PopupMenu popupMenu = new PopupMenu(context, view);
@@ -405,4 +466,41 @@ public class SongPopupMenu extends SlideUpPanelActivity {
         return false;
     }
 
+    private static class AddPlaylist extends RecyclerView.Adapter<AddPlaylist.view_holder>{
+
+        Context context;
+        List<MusicFiles> playlistLists;
+
+        public AddPlaylist(Context context, List<MusicFiles> playlistLists) {
+            this.context = context;
+            this.playlistLists = playlistLists;
+        }
+
+        @NonNull
+        @Override
+        public AddPlaylist.view_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            return new view_holder(LayoutInflater.from(context).inflate(R.layout.add_playlist_item, parent, false));
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull AddPlaylist.view_holder holder, int position) {
+            holder.title.setText(playlistLists.get(position).getPlaylistTitle());
+            holder.itemView.setOnClickListener(v ->{
+                Toast.makeText(context, "Added", Toast.LENGTH_SHORT).show();
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return playlistLists.size();
+        }
+
+        public static class view_holder extends RecyclerView.ViewHolder {
+            TextView title;
+            public view_holder(@NonNull View itemView) {
+                super(itemView);
+                title = itemView.findViewById(R.id.add_playlist_title);
+            }
+        }
+    }
 }

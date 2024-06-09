@@ -58,7 +58,7 @@ public class AddFavAdapter extends RecyclerView.Adapter<AddFavAdapter.MyViewHold
         });
         if (id == R.layout.list_items) {
             holder.more.setOnClickListener(v -> {
-                new SongPopupMenu(context, v).createSongPopupMenu(FavFiles.get(position).getIndexSong());
+                new SongPopupMenu(context, v).createSongPopupMenu(position);
             });
         }
     }

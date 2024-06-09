@@ -73,7 +73,7 @@ public class AlbumDetailsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        if (albumSongs != null) {
+        if (!albumSongs.isEmpty()) {
             byte[] albumArt = getImg(albumSongs.get(0).getPath());
             if (albumArt != null) {
                 Glide.with(this).load(albumArt).into(albumBanner);

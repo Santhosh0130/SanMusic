@@ -8,6 +8,9 @@
         android:id="@+id/add_to_queue_item"
         android:title="Add to playing queue" />
     <item
+        android:id="@+id/add_to_playlist_item"
+        android:title="Add to playlist" />
+    <item
         android:id="@+id/share_item"
         android:title="Share" />
     <item

@@ -3,6 +3,7 @@ package com.example.sanmusic.Activities;
 import static com.example.sanmusic.AdapterClasses.AddFavAdapter.FavFiles;
 import static com.example.sanmusic.AdapterClasses.AlbumDetailsAdapter.album_list;
 import static com.example.sanmusic.AdapterClasses.MusicAdapter.files;
+import static com.example.sanmusic.AdapterClasses.SearchAdapter.searchedItems;
 import static com.example.sanmusic.MusicService.is_Created;
 
 import android.Manifest;
@@ -343,9 +344,14 @@ public class SlideUpPanelActivity extends AppCompatActivity implements ActionPla
         }
 
         //Songs
-        else if (mSender != null && mSender.equals("Songs")){
-            list_songs = files;
-            realPosition = getIntent().getIntExtra("song_position", -1);
+        else if (mSender != null){
+            if (mSender.equals("Songs")) {
+                list_songs = files;
+                realPosition = getIntent().getIntExtra("song_position", -1);
+            } else {
+                list_songs = searchedItems;
+                realPosition = getIntent().getIntExtra("song_position", -1);
+            }
         }
 
         if (list_songs != null){
@@ -688,6 +694,10 @@ public class SlideUpPanelActivity extends AppCompatActivity implements ActionPla
         return ran.nextInt(i + 1);
     }
 
+    public void updateList(List<MusicFiles> updatedList){
+        list_songs = new ArrayList<>(updatedList);
+    }
+
     //For Animate the Images, After click next or prev Buttons
     private void ImageViewAnimation(Context context, ImageView imageView, ImageView imageView1, Bitmap bitmap){
         Animation animOut = AnimationUtils.loadAnimation(context, android.R.anim.fade_out);
@@ -765,9 +775,6 @@ public class SlideUpPanelActivity extends AppCompatActivity implements ActionPla
             topSongName.setText(list_songs.get(position).getTitle());
             bottomSongName.setText(list_songs.get(position).getTitle());
             bottomArtistName.setText(list_songs.get(position).getArtist());
-
-            Toast.makeText(this, "Called", Toast.LENGTH_SHORT).show();
-            onResume();
 
             musicService.OnCompleted();
         }
