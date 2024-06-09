@@ -8,6 +8,7 @@ import static com.example.sanmusic.SongPopupMenu.MY_GRID_STYLE_SETTINGS;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,6 +27,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sanmusic.Activities.SearchActivity;
 import com.example.sanmusic.AdapterClasses.AddFavAdapter;
 import com.example.sanmusic.DataBase.FavDB;
 import com.example.sanmusic.MusicFiles;
@@ -71,6 +73,9 @@ public class FavoritesFragment extends Fragment {
             popupMenu.getMenuInflater().inflate(R.menu.songs_more_popup_menu, popupMenu.getMenu());
             popupMenu.setOnMenuItemClickListener(this::getPopup);
             popupMenu.show();
+        });
+        view.findViewById(R.id.search_btn).setOnClickListener(v ->{
+            startActivity(new Intent(requireActivity(), SearchActivity.class));
         });
 
         order = requireContext().getSharedPreferences(MY_SORT_SETTINGS, MODE_PRIVATE).getString("favSorting", "asc");

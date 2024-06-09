@@ -3,6 +3,7 @@ package com.example.sanmusic.Fragments;
 import static com.example.sanmusic.Activities.SlideUpPanelActivity.playlists;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sanmusic.Activities.SearchActivity;
 import com.example.sanmusic.AdapterClasses.AlbumAdapter;
 import com.example.sanmusic.MusicFiles;
 import com.example.sanmusic.R;
@@ -47,6 +49,9 @@ public class PlaylistFragment extends Fragment {
             popupMenu.getMenuInflater().inflate(R.menu.play_list_popup_menu, popupMenu.getMenu());
             popupMenu.setOnMenuItemClickListener(this::getPopup);
             popupMenu.show();
+        });
+        view.findViewById(R.id.search_btn).setOnClickListener(v ->{
+            startActivity(new Intent(requireActivity(), SearchActivity.class));
         });
 
         albumAdapter = new AlbumAdapter(playlists, requireContext(), R.layout.card_item, true);

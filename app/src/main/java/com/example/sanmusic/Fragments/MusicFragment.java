@@ -7,6 +7,7 @@ import static com.example.sanmusic.SongPopupMenu.MY_SORT_SETTINGS;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sanmusic.Activities.SearchActivity;
 import com.example.sanmusic.AdapterClasses.MusicAdapter;
 import com.example.sanmusic.FetchSongs;
 import com.example.sanmusic.MusicFiles;
@@ -57,6 +59,9 @@ public class MusicFragment extends Fragment {
             popupMenu.setOnMenuItemClickListener(this::getPopup);
             checkMenu(popupMenu.getMenu());
             popupMenu.show();
+        });
+        view.findViewById(R.id.search_btn).setOnClickListener(v ->{
+            startActivity(new Intent(requireActivity(), SearchActivity.class));
         });
 
         Order = requireActivity().getSharedPreferences(MY_SORT_SETTINGS, MODE_PRIVATE).getString("songSorting","asc");
